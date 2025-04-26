@@ -1,0 +1,33 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.table img {
+  object-fit: cover;
+  height: 60px;
+  width: 100px;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.btn-primary.rounded-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+

@@ -1,235 +1,79 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+/* General Body Styling */
+body {
+  background-color: #f8f9fa;
+  margin-top: 85px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* body {
-  background-color: #f5f5f5;
-  min-height: 100vh;
-} */
-
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 100px;
+/* Card Styling */
+.card {
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-4px);
 }
 
-/* Header Styles */
-.light-header {
-  padding: 10px 20px;
-  color: #999;
-  font-size: 14px;
-}
-
-.main-header {
-  background-color: #4582b7;
-  color: white;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.main-header h1 {
-  font-size: 24px;
-  font-weight: normal;
-}
-
-.logout {
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.logout i {
-  margin-left: 5px;
-}
-
-/* Summary Section */
-.summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-  border-bottom: 1px solid #eee;
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.total h2 {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.status {
-  flex-basis: 65%;
-  display: flex;
-  gap: 25px;
-  align-items: left;
-  text-align: left;
-}
-
-.good, .bad {
-  font-size: 14px;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-}
-
-.search-box label {
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.search-box input {
-  padding: 8px 15px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  width: 200px;
-  font-size: 14px;
-}
-
-/* Drone Grid */
-.drone-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 25px;
-  row-gap: 30px;
-  padding: 35px;
-  margin-top: 150px;
-}
-
-.drone-card {
-  background-color: #FFFFFF;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-  position: relative;
-  border: 1px solid #ddd;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  width: 8  0%;
-  min-height: 70px;
-}
-
-.drone-card:hover {
-  box-shadow: 0 20px 30px rgba(127, 127, 226, 0.2);  
-  transform: translateY(-5px);  
-}
-
-.drone-card img {
-  width: 100%;
-  height: 140px;
+.card-img-top {
+  height: 150px;
   object-fit: cover;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }
 
-.drone-info {
-  padding: 15px;
-}
-
-.drone-info h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.drone-info p {
-  font-size: 14px;
-  color: #666;
-}
-
-.arrow-icon {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  color: #1e73be;
-  font-size: 18px;
-}
-
-/* Add Button */
+/* Floating Add Button */
 .add-button {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 20px;
+  right: 20px;
   width: 60px;
   height: 60px;
-  background-color: #1e73be;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 100;
-  transition: all 0.3s ease; /* Add smooth transition */
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
 }
-
-.add-button img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  transition: all 0.3s ease; 
-}
-
 .add-button:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  background-color: #1665ad; 
+  background-color: #0b5ed7;
 }
 
-.add-button:active {
-  transform: translateY(-2px); 
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+/* Modal Styling */
+.modal-content {
+  border-radius: 10px;
+  padding: 10px;
+  width: 250%;
+  max-width: 2000px;
 }
 
-.add-button:hover img {
-  transform: scale(1.1);
+.modal-header {
+  border-bottom: none;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .drone-grid {
-      grid-template-columns: repeat(3, 1fr);
-  }
+/* Upload Box */
+.upload-box {
+  width: 100%;
+  height: 150px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f9f9f9;
+  border-radius: 2px;
+  transition: background-color 0.2s ease-in-out;
 }
-
-@media (max-width: 768px) {
-  .drone-grid {
-      grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .summary {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-  }
-  
-  .search-box {
-      width: 100%;
-  }
-  
-  .search-box input {
-      width: 100%;
-  }
-}
-
-@media (max-width: 450px) {
-  .drone-grid {
-      grid-template-columns: 1fr;
-  }
+.upload-box:hover {
+  background-color: #f0f0f0;
 }
