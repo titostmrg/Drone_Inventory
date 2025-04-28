@@ -12,7 +12,7 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-dark bg-primary px-4 fixed-top shadow">
-  <span class="navbar-brand fw-bold">DRONE 1</span>
+  <span class="navbar-brand fw-bold">{{ $merk->nama_merk }}</span>
   <div class="ms-auto">
     <a href="{{ route('home') }}" class="btn text-white"><i class="bi bi-house-fill"></i></a>
   </div>
@@ -52,29 +52,22 @@
         </tr>
       </thead>
       <tbody>
+
+  @foreach ($drones as $index => $drone)
   <tr>
-    <td>1</td>
-    <td><img src="../assets/cth1.jpg" class="img-thumbnail" width="100"></td>
-    <td>Drone 1 - A</td>
-    <td>09 Juli 2019</td>
-    <td>6 Tahun 2 Bulan</td>
-    <td><button class="btn btn-sm btn-outline-secondary">Rp 50.000.000</button></td>
-    <td><button class="btn btn-success btn-sm">Bagus</button></td>
+    <td>{{ $index + 1 }}</td>
+    <td><img src="{{ asset('storage/' . $drone->gambar) }}" class="img-thumbnail" width="100"></td>
+    <td>{{ $drone->nama_drone }}</td>
+    <td>{{ \Carbon\Carbon::parse($drone->tanggal_pengadaan)->translatedFormat('d F Y') }}</td>
+    <td>{{ $drone->umur_tahun }} Tahun {{ $drone->umur_bulan }} Bulan</td>
+    <td><button class="btn btn-sm btn-outline-secondary">Rp {{ number_format($drone->harga, 0, ',', '.') }}</button></td>
     <td>
-      <div class="d-flex gap-1">
-      <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalEditDrone"><i class="bi bi-pencil-square"></i></button>
-      <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteDrone"><i class="bi bi-trash"></i></button>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td><img src="../assets/cth1.jpg" class="img-thumbnail" width="100"></td>
-    <td>Drone 1 - B</td>
-    <td>24 Februari 2020</td>
-    <td>5 Tahun 7 Bulan</td>
-    <td><button class="btn btn-sm btn-outline-secondary">Rp 87.000.000</button></td>
-    <td><button class="btn btn-warning text-dark" data-bs-toggle="modal" data-bs-target="#modalDetailRusak">Rusak</button>
+    @if($drone->keterangan)
+      <button class="btn btn-success btn-sm">Bagus</button>
+    @else
+      <button class="btn btn-danger btn-sm">Rusak</button>
+    @endif
+    </button>
   </td>
     <td>
       <div class="d-flex gap-1">
@@ -83,23 +76,7 @@
       </div>
     </td>
   </tr>
-  <tr>
-    <td>3</td>
-    <td><img src="../assets/cth1.jpg" class="img-thumbnail" width="100"></td>
-    <td>Drone 1 - A</td>
-    <td>09 Juli 2019</td>
-    <td>6 Tahun 8 Bulan</td>
-    <td><button class="btn btn-sm btn-outline-secondary">Rp 50.000.000</button></td>
-    <td><button class="btn btn-success btn-sm">Bagus</button></td>
-    <td>
-      <div class="d-flex gap-1">
-      <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalEditDrone"><i class="bi bi-pencil-square"></i></button>
-      <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteDrone"><i class="bi bi-trash"></i></button>
-      </div>
-    </td>
-  </tr>
-</tbody>
-    </table>
+@endforeach
 
     <!-- Modal Detail Rusak -->
 <div class="modal fade" id="modalDetailRusak" tabindex="-1" aria-labelledby="modalDetailRusakLabel" aria-hidden="true">

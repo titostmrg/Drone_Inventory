@@ -32,18 +32,22 @@
     </div>
 
     <!-- Drone Cards -->
+    
     <div class="row g-3">
+    @foreach ($drones as $drone)
       <div class="col-6 col-md-3">
         <div class="card h-100">
           <img src="../assets/drone-bg.jpg" class="card-img-top" alt="Drone" />
           <div class="card-body">
-            <h6 class="card-title">Drone 1</h6>
+            <h6 class="card-title">{{ $drone->nama_drone }}</h6>
             <p class="card-text mb-2">Jumlah stok: 5</p>
-            <a href="details" class="btn btn-outline-primary btn-sm float-end"><i class="bi bi-arrow-right"></i></a>
+            <a href="{{ route('drones.show', $drone->merk->id) }}" class="btn btn-outline-primary btn-sm float-end"><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
+      @endforeach
   </div>
+
 
   <!-- Floating Add Button -->
   <a href="#" class="btn btn-primary rounded-circle shadow-lg add-button" data-bs-toggle="modal" data-bs-target="#addDroneModal">

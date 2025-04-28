@@ -1,27 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('app');
-});
+use App\Http\Controllers\DroneController;
 
 // Route untuk halaman login
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 })->name('login');  
 
-// Route untuk halaman home
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+// Route untuk halaman home menampilkan merk-merk drone
+Route::get('/home', [DroneController::class, 'index'])->name('home');
 
 // Route untuk halaman details
-Route::get('/details', function () {
-    return view('details');
-});
+Route::get('/drones/{id}', [DroneController::class, 'show'])->name('drones.show');
 
 // Route untuk halaman addDrone
 Route::get('/addDrone', function () {
     return view('addDrone');
 });
+
+

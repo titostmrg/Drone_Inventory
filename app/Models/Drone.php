@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;      
 
 class Drone extends Model
 {
     protected $fillable = [
-        'nama_drone', 'gambar', 'tanggal_pengadaan', 'harga', 'keterangan'
+        'nama_drone', 'gambar', 'tanggal_pengadaan', 'harga', 'keterangan', 'merk_id'
     ];
 
     // Hitung umur saat create/update dan simpan ke dalam tabel
@@ -25,14 +26,10 @@ class Drone extends Model
         });
     }
 
-    // Kalau tetap ingin accessor (optional)
-    public function getUmurTahunAttribute()
+    public function merk()
     {
-        return $this->umur_tahun; // Ambil dari database langsung
-    }
+        return $this->belongsTo(DroneMerk::class, 'merk_id');
+    }   
 
-    public function getUmurBulanAttribute()
-    {
-        return $this->umur_bulan; // Ambil dari database langsung
-    }
+
 }
