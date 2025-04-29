@@ -15,6 +15,11 @@
         </div>
         <div class="col-md-6 d-flex justify-content-start align-items-center">
             <div class="login-form ms-auto me-5 text-center">
+            @if ($errors->has('login'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('login') }}
+                    </div>
+                @endif
                 <!-- Logo -->
                 <img src="../assets/logoptpn4.png" alt="Company Logo" class="mb-4" style="max-width: 325px;">
                 
@@ -22,17 +27,19 @@
                 <h2 class="login-title">Drone Inventory</h2>
 
                 <!-- Form -->
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div class="mb-3 text-start">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                        <input type="text" name="name" class="form-control" id="username" placeholder="Enter username" required>
                     </div>
                     <div class="mb-4 text-start">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
+
             </div>
         </div>
     </div>

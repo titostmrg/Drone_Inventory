@@ -14,7 +14,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 fixed-top shadow">
     <span class="navbar-brand fw-bold">Drone Inventory</span>
     <div class="ms-auto">
+    @if (session('is_logged_in'))
      <a href="{{ route('login') }}" class="btn btn-link text-white text-decoration-none">LOGOUT <i class="bi bi-box-arrow-right"></i></a>
+    @endif
     </div>
   </nav>
 
@@ -22,8 +24,8 @@
   <div class="container" style="margin-top: 90px;">
     <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
       <div>
-        <h5 class="mb-0 fw-bold">TOTAL DRONE : <span>20</span></h5>
-        <small class="text-muted">BAGUS: 15 &nbsp;&nbsp;&nbsp; RUSAK: 5</small>
+        <h5 class="mb-0 fw-bold">TOTAL DRONE : <span>{{ $totalDrone }}</span></h5>
+        <small class="text-muted">BAGUS: {{ $droneBagus }} &nbsp;&nbsp;&nbsp; RUSAK: {{ $droneRusak }}</small>
       </div>
       <div class="d-flex align-items-center">
         <label class="me-2">Cari</label>
@@ -34,19 +36,19 @@
     <!-- Drone Cards -->
     
     <div class="row g-3">
-    @foreach ($drones as $drone)
+    @foreach ($merks as $merk)
       <div class="col-6 col-md-3">
         <div class="card h-100">
-          <img src="../assets/drone-bg.jpg" class="card-img-top" alt="Drone" />
+          <img src="../assets/bg-login.jpg" class="card-img-top" alt="Drone" />
           <div class="card-body">
-            <h6 class="card-title">{{ $drone->nama_drone }}</h6>
-            <p class="card-text mb-2">Jumlah stok: 5</p>
-            <a href="{{ route('drones.show', $drone->merk->id) }}" class="btn btn-outline-primary btn-sm float-end"><i class="bi bi-arrow-right"></i></a>
+            <h6 class="card-title">{{ $merk->nama_merk }}</h6>
+            <p class="card-text mb-2">Jumlah stok: {{ $merk->drones_count }} </p>
+            <a href="{{ route('drone.details', $merk->id) }}" class="btn btn-outline-primary btn-sm float-end"><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
       @endforeach
-  </div>
+    </div>
 
 
   <!-- Floating Add Button -->

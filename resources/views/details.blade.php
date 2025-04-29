@@ -21,20 +21,6 @@
 <!-- Spacer untuk fixed navbar -->
 <div style="margin-top: 70px;"></div>
 
-<!-- Sticky sub-header -->
-<!-- <div class="sticky-top bg-white py-3 shadow-sm" style="top: 70px; z-index: 1020;"> -->
-  <div class="container d-flex flex-wrap justify-content-between align-items-center">
-    <div>
-      <h5 class="fw-bold mb-0">TOTAL DRONE : <span>20</span></h5>
-      <small class="text-muted">BAGUS: 15 &nbsp;&nbsp;&nbsp; RUSAK: 5</small>
-    </div>
-    <div class="d-flex align-items-center mt-2 mt-md-0">
-      <label class="me-2 mb-0">Cari</label>
-      <input type="text" class="form-control form-control-sm" placeholder="Nama Drone">
-    </div>
-  </div>
-</div>
-
 <!-- Tabel Data -->
 <div class="container mt-4">
   <div class="table-responsive">

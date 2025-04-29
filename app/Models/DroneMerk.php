@@ -10,6 +10,7 @@ class DroneMerk extends Model
     {
         return $this->hasMany(Drone::class, 'merk_id');
     }
+
 }
 
 
